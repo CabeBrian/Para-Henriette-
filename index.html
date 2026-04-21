@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Buen Viaje Amor</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Fondo animado */
+.fondo {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1470509037663-253afd7f0f51') no-repeat center center/cover;
+    animation: moverFondo 60s linear infinite;
+    z-index: -2;
+}
+
+@keyframes moverFondo {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+}
+
+/* Carta */
+.carta-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.carta {
+    width: 90%;
+    max-width: 800px;
+    background: linear-gradient(to bottom, #f5e6c8, #e4cfa3);
+    border: 2px solid #c2a878;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.6);
+    padding: 30px;
+    animation: abrirCarta 2s ease forwards;
+}
+
+/* Animación */
+@keyframes abrirCarta {
+    from {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+    to {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+}
+
+.nombre {
+    text-align: center;
+    font-size: 45px;
+    font-family: 'Dancing Script', cursive;
+    opacity: 0;
+    animation: aparecerNombre 3s ease forwards;
+    animation-delay: 2s;
+}
+
+@keyframes aparecerNombre {
+    from { opacity: 0; letter-spacing: 20px; }
+    to { opacity: 1; letter-spacing: 2px; }
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify;
+    white-space: pre-line;
+}
+
+/* Botón */
+.boton {
+    display: block;
+    margin: 25px auto;
+    padding: 12px 25px;
+    font-size: 18px;
+    background: #d4a017;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.mensaje {
+    text-align: center;
+    font-size: 28px;
+    font-family: 'Dancing Script', cursive;
+    display: none;
+}
+
+/* Botón música */
+.musica-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="fondo"></div>
+<div class="overlay"></div>
+
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<button class="musica-btn" onclick="activarMusica()">🎵 Música</button>
+
+<div class="carta-container">
+    <div class="carta">
+
+        <div class="nombre">Henriette 💛</div>
+
+        <h1>Buen viaje amor</h1>
+
+        <p>
+Hola amorcito, te escribo esto para desearte un buen viaje y unos meses muy buenos en tu destino, después de años, de intentarlo, de rechazos de VISA, de peros, de estudios, ahora lo estas logrando, aparecí un día en tu vida y me contaste todo lo que soñaste y ahora que vas a cumplir una pequeña parte de ese sueño, no me puedo sentir mas orgulloso de vos, de esa niña que da un paso enorme para ser la mujer que queres, llena de sueños, de objetivos, por que no importa si tenés dudas, miedos, pensamientos de incertidumbre, vos seguís para adelante y eso es lo que más me gusta de vos, luchas por lo que queres y eso es una llama que es difícil de apagar.
+
+Te escribo esto deseándote siempre felicidad y que cumplas con todo lo que tengas en mente, también en tu corazón, que es lo que mas brilla cuando todo parece gris, así como al ver un ramo de girasoles, giras y das luz cuando mas se necesita, das luz a mis días, pero esto no se trata de mí, se trata de vos Henriette, se trata de que estas por empezar una aventura que venís planeando hace años, años de sacrificio, de trabajos para ahorrar, de estudios para fonetizar mejor, por eso cuando llegues espero que con una voz de alegría me digas, que llegaste y que estas feliz.
+
+Aunque te sientas sola voy a estar para vos, aunque te sientas triste voy a hacer lo posible para sacarte una sonrisa y espero verte en unos meses, allá, como pensamos y manifestamos, quiero que salga todo bien y si hay tropiezos, vamos a seguir, por que sos una peleadora y yo igual, peleamos por lo que tenemos de objetivo y gracias a vos quiero acompañarte en todo lo que necesites y darte tanto amor, como apoyo emocional.
+
+Sería muy largo si me extiendo, pero nomás es un texto para desearte ánimos, cariño, amor y sobre todo, que tengas la mejor de la suerte y que nunca te rindas, si en algún momento lo pensas, quiero que me lo digas para decirte : “dale Henriette, hay que seguir”, lucha y viví por tu sueño, te amo.
+
+Que tengas un buen viaje, una muy buena estadía y que empiece todo por que lo que una vez proyectaste y soñaste, es tu viaje, tu vida, tu sueño, te adoro.
+
+        </p>
+
+        <button class="boton" onclick="mostrarMensaje()">Te amo 💌</button>
+
+        <div class="mensaje" id="mensajeFinal">
+            Siempre voy a estar para vos 🌻💛
+        </div>
+
+    </div>
+</div>
+
+<script>
+function mostrarMensaje() {
+    document.getElementById("mensajeFinal").style.display = "block";
+}
+
+function activarMusica() {
+    let musica = document.getElementById("musica");
+    musica.volume = 0.4;
+    musica.play();
+}
+</script>
+
+</body>
+</html>
