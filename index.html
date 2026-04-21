@@ -2,6 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Buen Viaje Amor</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&display=swap" rel="stylesheet">
@@ -9,59 +11,66 @@
 <style>
 body {
     margin: 0;
-    overflow: hidden;
     font-family: 'Playfair Display', serif;
+    overflow-x: hidden;
 }
 
-/* Fondo animado */
+/* Fondo FIX para mobile */
 .fondo {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: url('https://images.unsplash.com/photo-1470509037663-253afd7f0f51') no-repeat center center/cover;
-    animation: moverFondo 60s linear infinite;
+
+    background-image: url('https://images.unsplash.com/photo-1470509037663-253afd7f0f51');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     z-index: -2;
 }
 
-@keyframes moverFondo {
-    from { transform: scale(1); }
-    to { transform: scale(1.1); }
-}
-
+/* Oscurecer un poco */
 .overlay {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.35);
+    z-index: -1;
+}
+
+/* Contenedor */
+.carta-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 /* Carta */
-.carta-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 .carta {
-    width: 90%;
-    max-width: 800px;
+    width: 100%;
+    max-width: 700px;
+    padding: 25px;
+
     background: linear-gradient(to bottom, #f5e6c8, #e4cfa3);
-    border: 2px solid #c2a878;
     border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.6);
-    padding: 30px;
-    animation: abrirCarta 2s ease forwards;
+    border: 2px solid #c2a878;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+
+    animation: abrirCarta 1.5s ease;
 }
 
-/* Animación */
+/* Animación más suave para celular */
 @keyframes abrirCarta {
     from {
-        transform: scaleY(0);
+        transform: scale(0.9);
         opacity: 0;
     }
     to {
-        transform: scaleY(1);
+        transform: scale(1);
         opacity: 1;
     }
 }
@@ -69,25 +78,32 @@ body {
 h1 {
     text-align: center;
     font-family: 'Dancing Script', cursive;
-    font-size: 40px;
+    font-size: 32px;
 }
 
+/* Nombre */
 .nombre {
     text-align: center;
-    font-size: 45px;
+    font-size: 36px;
     font-family: 'Dancing Script', cursive;
     opacity: 0;
-    animation: aparecerNombre 3s ease forwards;
-    animation-delay: 2s;
+    animation: aparecerNombre 2s ease forwards;
+    animation-delay: 1s;
 }
 
 @keyframes aparecerNombre {
-    from { opacity: 0; letter-spacing: 20px; }
-    to { opacity: 1; letter-spacing: 2px; }
+    from {
+        opacity: 0;
+        letter-spacing: 10px;
+    }
+    to {
+        opacity: 1;
+        letter-spacing: 2px;
+    }
 }
 
 p {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.6;
     text-align: justify;
     white-space: pre-line;
@@ -96,19 +112,19 @@ p {
 /* Botón */
 .boton {
     display: block;
-    margin: 25px auto;
-    padding: 12px 25px;
-    font-size: 18px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
     background: #d4a017;
     color: white;
     border: none;
-    border-radius: 25px;
-    cursor: pointer;
+    border-radius: 20px;
 }
 
+/* Mensaje */
 .mensaje {
     text-align: center;
-    font-size: 28px;
+    font-size: 24px;
     font-family: 'Dancing Script', cursive;
     display: none;
 }
@@ -116,14 +132,14 @@ p {
 /* Botón música */
 .musica-btn {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 15px;
+    right: 15px;
+    font-size: 14px;
+    padding: 8px 12px;
     background: black;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 20px;
-    cursor: pointer;
+    border-radius: 15px;
 }
 </style>
 </head>
@@ -155,8 +171,7 @@ Aunque te sientas sola voy a estar para vos, aunque te sientas triste voy a hace
 
 Sería muy largo si me extiendo, pero nomás es un texto para desearte ánimos, cariño, amor y sobre todo, que tengas la mejor de la suerte y que nunca te rindas, si en algún momento lo pensas, quiero que me lo digas para decirte : “dale Henriette, hay que seguir”, lucha y viví por tu sueño, te amo.
 
-Que tengas un buen viaje, una muy buena estadía y que empiece todo por que lo que una vez proyectaste y soñaste, es tu viaje, tu vida, tu sueño, te adoro.
-
+Que tengas un buen viaje, una muy buena estadía y que empiece todo por que lo que una vez proyectaste y soñaste, es tu viaje, tu vida, tu sueño, te adoro.            
         </p>
 
         <button class="boton" onclick="mostrarMensaje()">Te amo 💌</button>
